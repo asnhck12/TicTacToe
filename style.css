@@ -1,0 +1,19 @@
+.container {
+    height: 100vh;
+    width: auto;
+    
+}
+
+.gameBoard {
+    display: grid;
+    grid-template-columns:  70px 70px 70px;
+    gap: 0;
+    border: 1px black solid;
+    align-items: center;
+}
+
+.cells {
+    height: 70px;
+    width: 70px;
+    border: 1px black solid;
+}
