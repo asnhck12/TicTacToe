@@ -12,22 +12,50 @@ const gameBoard = (() => {
     }
 });
 
-const displayController = ((players, targetID) => {
+const displayController = ((targetID) => {
     const para = document.createElement('p');
-    const IndCell = document.querySelector(".cells");
+    // const IndCell = document.querySelector(".cells");
     const p = targetID.querySelector(':first-child');
-   
-    if (p !== null) {
-        console.log("Not Empty")}
-    
-    else {
-        var markerSign = document.createTextNode(players.marker);  
-        para.appendChild(markerSign);
-        para.setAttribute("id",players.marker);
-        targetID.appendChild(para);  
-        console.log(p);  
-    };
-    });
+
+    console.log("p is " + p);
+    // console.log(currentUser);
+    // console.log(targetID);
+      
+     if (currentUser == "" && p == null) {
+            currentUser = playerCrosses;
+            console.log(currentUser)
+            console.log(currentUser.marker);
+            var markerSign = document.createTextNode(currentUser.marker);
+            para.appendChild(markerSign);
+            para.setAttribute("id",currentUser.marker);
+            targetID.appendChild(para);
+            currentUser = playerNoughts;
+            console.log(currentUser);
+        }
+        else if (currentUser == playerCrosses && p == null) {
+            var markerSign = document.createTextNode(currentUser.marker);
+            para.appendChild(markerSign);
+            para.setAttribute("id",currentUser.marker);
+            targetID.appendChild(para);
+            currentUser = playerNoughts;
+            console.log(currentUser);
+        }
+        else if (currentUser == playerNoughts && p == null) {
+            var markerSign = document.createTextNode(currentUser.marker);  
+            para.appendChild(markerSign);
+            para.setAttribute("id",currentUser.marker);
+            targetID.appendChild(para);
+            currentUser = playerCrosses;
+            console.log(currentUser);
+         }
+        else if (p != null) {
+            console.log("Skip");
+        }
+
+        }
+            
+
+);
 
 const players = (user, marker) => {
     console.log('i am ' + user +' using ' + marker);
@@ -36,16 +64,10 @@ const players = (user, marker) => {
 
 const playerNoughts = players('User', 'O');
 const playerCrosses = players('CPU', 'X');
+
 gameBoard();
 
 gridCells.addEventListener('click', (e) =>  {
     targetID = e.target.id;
     gridID = document.getElementById(targetID);
-    if (currentUser == "" || currentUser == playerNoughts) {
-    currentUser = playerCrosses;
-    displayController(currentUser, gridID);}
-    else if (currentUser == playerCrosses) {
-        currentUser = playerNoughts;
-        displayController(currentUser, gridID);
-    }
-});
+    displayController(gridID);})
