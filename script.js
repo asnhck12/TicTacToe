@@ -14,14 +14,10 @@ const gameBoard = (() => {
 
 const displayController = ((targetID) => {
     const para = document.createElement('p');
-    // const IndCell = document.querySelector(".cells");
-    const p = targetID.querySelector(':first-child');
+    const markerPlacement = targetID.querySelector(':first-child');
 
-    console.log("p is " + p);
-    // console.log(currentUser);
-    // console.log(targetID);
-      
-     if (currentUser == "" && p == null) {
+     if (markerPlacement == null) {
+        if (currentUser == "") {
             currentUser = playerCrosses;
             console.log(currentUser)
             console.log(currentUser.marker);
@@ -32,7 +28,7 @@ const displayController = ((targetID) => {
             currentUser = playerNoughts;
             console.log(currentUser);
         }
-        else if (currentUser == playerCrosses && p == null) {
+        else if (currentUser == playerCrosses) {
             var markerSign = document.createTextNode(currentUser.marker);
             para.appendChild(markerSign);
             para.setAttribute("id",currentUser.marker);
@@ -40,25 +36,18 @@ const displayController = ((targetID) => {
             currentUser = playerNoughts;
             console.log(currentUser);
         }
-        else if (currentUser == playerNoughts && p == null) {
+        else if (currentUser == playerNoughts) {
             var markerSign = document.createTextNode(currentUser.marker);  
             para.appendChild(markerSign);
             para.setAttribute("id",currentUser.marker);
             targetID.appendChild(para);
             currentUser = playerCrosses;
             console.log(currentUser);
-         }
-        else if (p != null) {
-            console.log("Skip");
+        }}
         }
-
-        }
-            
-
 );
 
 const players = (user, marker) => {
-    console.log('i am ' + user +' using ' + marker);
     return {user, marker};
 };
 
@@ -68,6 +57,10 @@ const playerCrosses = players('CPU', 'X');
 gameBoard();
 
 gridCells.addEventListener('click', (e) =>  {
+    var targetCell = e.target.classList.contains('cells');
+    if (targetCell == true) {
     targetID = e.target.id;
     gridID = document.getElementById(targetID);
-    displayController(gridID);})
+    displayController(gridID);
+    }
+})
