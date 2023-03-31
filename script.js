@@ -16,7 +16,6 @@ const gameBoard = (() => {
 });
 
 function displayResult(result) {
-  // const resultMessage = document.getElementById('result');
   if (result === 'tie') {
     resultMessage.innerText = "It's a tie!";
   } else {
