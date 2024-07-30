@@ -1,3 +1,4 @@
 # TicTacToe
 
-An ongoing TicTacToe game project
+A basic TicTacToe game project using HTML and JS
+

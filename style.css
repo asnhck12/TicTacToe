@@ -22,6 +22,10 @@ body {
     height: 70px;
     width: 70px;
     border: 1px black solid;
+    display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: xxx-large;
 }
 
 #result {
@@ -39,4 +43,5 @@ button {
     border: 1px black solid;
     width: auto;
     padding: 10%;
+    font-size: large;
 }
